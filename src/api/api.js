@@ -3,7 +3,7 @@
  */
 
 const URL = 'http://backup.hangdali.com/getDataList';
-const CHINAURL = 'http://ch.dev.selcome.com/stats/'
+const CHINAURL = 'http://ch.dev.selcome.com/stats/web/'
 
 export default {
   getDatalist (searchObj,cb) {
@@ -26,11 +26,19 @@ export default {
   },
   getColumnDatalist (searchObj,cb) {
 
-    let body = `columnId=${searchObj.columnId}&startDate=${searchObj.startDate}&endDate=${searchObj.endDate}&appID=${searchObj.appID}&language=${searchObj.language}`;
-
+    let cooo = JSON.stringify(["39","3"]);
+    let body = `columnId=[]&startDate=${searchObj.startDate}&endDate=${searchObj.endDate}&appID=${searchObj.appID}&language=${searchObj.language}`;
+    let params = {
+      columnId:cooo,
+      startDate:searchObj.startDate,
+      endDate:searchObj.endDate,
+      appID:searchObj.appID,
+      language:searchObj.language
+    };
     fetch(CHINAURL+'columnStats', {
       method: "POST",
       headers: {
+        // "Content-Type": "application/json"
         "Content-Type": "application/x-www-form-urlencoded"
       },
       body: body

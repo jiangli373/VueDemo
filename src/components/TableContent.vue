@@ -22,17 +22,23 @@
     </el-alert>
     <el-table
       :data="tableData3"
-      height=""
+      height="1000"
       border
       style="width: 100%">
       <el-table-column
-        property="columnId"
+        property="columnName"
         label="栏目"
         width="180">
       </el-table-column>
       <el-table-column
         property="dateString"
         label="统计时间"
+        width="180">
+      </el-table-column>
+      <el-table-column
+        sortable
+        property="flushCount"
+        label="刷新量"
         width="180">
       </el-table-column>
       <el-table-column
@@ -122,8 +128,9 @@
     methods: {
       toDetail(event){
         console.log('ddddddddd----',event.target.getAttribute('columnId'));
+        console.log('language----',this.$route.params.language);
         let columnId = event.target.getAttribute('columnId');
-        this.$router.push(`/colunmDetail/${this.language}/${columnId}`);
+        this.$router.push(`/colunmDetail/${this.$route.params.language}/${columnId}`);
       },
       formatter(row, column) {
       },
